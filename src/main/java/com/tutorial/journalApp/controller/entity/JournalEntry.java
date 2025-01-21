@@ -1,6 +1,7 @@
 package com.tutorial.journalApp.controller.entity;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
@@ -13,6 +14,7 @@ import java.util.Date;
 @Document(collection = "journalEntry")
 //@Controller
 @Data
+@NoArgsConstructor
 public class JournalEntry {
 
     @Id

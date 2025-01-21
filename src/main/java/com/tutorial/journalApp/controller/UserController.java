@@ -39,9 +39,9 @@ public class UserController {
     @PutMapping("updateUser/{userName}")
     public ResponseEntity<?> updateUser(@RequestBody User user, @PathVariable String userName){
         User userinDb = userService.getUserEntryByusername(userName);
-        //user.setPassword(user.getPassword());
+        //user.setPassword(user.getPassword()
         if(userinDb != null){
-            userinDb.setUsername(user.getUsername());
+            userinDb.setUsername(user   .getUsername());
             userinDb.setPassword(user.getPassword());
             userService.saveUserEntry(userinDb);
             return new ResponseEntity<>(HttpStatus.OK);
@@ -50,6 +50,14 @@ public class UserController {
 
     }
 
+    @GetMapping("byName/{userName}")
+    public ResponseEntity<?> getUserByName(@PathVariable String userName){
+        User user = userService.getUserEntryByusername(userName);
+        if(user != null){
+            return new ResponseEntity<>(user, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
 
 
 
